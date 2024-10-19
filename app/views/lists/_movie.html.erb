@@ -1,0 +1,14 @@
+<div class="card-movie card--size">
+<div class='poster' style="background-image:url(<%= bookmark.movie.poster_url %>);">
+	</div>
+	  <h2 class="p-3"><%= bookmark.movie.title %></h2>
+	  <div class="content p-3"><%= bookmark.movie.overview %></div>
+	  <div class="comment p-3"><p><strong>Commentaires:</strong><br> <%= bookmark.comment %></p></div>
+	  <div class="footer p-3"><%= number_with_precision(bookmark.movie.rating, precision: 1) %><span><%= link_to 'Supprimer', bookmark_path(bookmark), class: "text-danger", data: {
+			turbo_method: :delete,
+			turbo_confirm: "Are you sure?"
+		  } %></span></div>
+	</div>
+	
+
+

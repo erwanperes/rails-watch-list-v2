@@ -1,0 +1,18 @@
+ <%= render "layouts/banner" %>
+ <nav class="navbar bg-body-tertiary bg-light">
+  <div class="container">
+	<%= link_to root_path, class: 'navbar-brand text-dark' do %>
+	  <i class="fa-solid fa-house"></i>
+	<% end %>
+	<ul class="navbar-nav ml-auto">
+	  <li>
+		  <% if should_show_new_list_link? %>
+			<%= link_to "Nouvelle liste", new_list_path, class: 'btn btn-primary' %>
+		  <% end %>
+	  </li>
+	</ul>
+  </div>
+</nav>
+
+
+

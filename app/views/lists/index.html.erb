@@ -1,0 +1,19 @@
+<div class="row mt-4">
+	<h1>Listes</h1>
+	<div class="cards">
+	<% @lists.each do |list| %>
+		  <div class="card-category" style="background-image: linear-gradient(rgba(6, 84, 97, 0.4),rgba(0, 7, 10, 0.4)), url(<%= asset_path('banner.jpg') %>);">
+		<div class="card-description">
+			<h1 class="card-title"><%= link_to list.name, list %></h1>
+			<p class="d-flex justify-content-end mx-4">
+			  <%= link_to 'Supprimer', list_path(list), data: {
+				  turbo_method: :delete,
+				  turbo_confirm: "Are you sure?"
+				} %>
+			</p>
+		  </div>
+		  </div>
+	<% end %>
+	</div>
+</div>
+

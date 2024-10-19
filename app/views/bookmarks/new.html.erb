@@ -1,0 +1,17 @@
+<h1>Ajouter un film à la liste <%= @list.name %></h1>
+
+<%= simple_form_for [@list, @bookmark] do |form| %>
+  <div>
+	<%= form.input :movie_id, collection: Movie.all, label_method: :title, value_method: :id, label: "Film", prompt: "Sélectionnez un film" %>
+  </div>
+
+  <div>
+	<%= form.input :comment, label: "Commentaire", placeholder: "Ajoutez un commentaire (minimum 6 caractères)" %>
+  </div>
+
+  <div>
+	<%= form.submit "Ajouter le film à la liste", class: "btn btn-primary mt-3" %>
+  </div>
+<% end %>
+<hr>
+<%= link_to 'Retour à la liste', @list, class: "btn btn-secondary mt-3"%>
