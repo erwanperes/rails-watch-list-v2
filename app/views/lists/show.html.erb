@@ -1,9 +1,16 @@
-<div class="row" mt-4>
+<div class="card-product">
+	<% if @list.image.key %>
+		<%= cl_image_tag @list.image.key %>
+	<% else %>
+		<img src="<%= image_path('banner.jpg') %>" />
+	<% end %>
+    <div class="card-product-infos">
 	<h1><%= @list.name %></h1>
+  </div>
 </div>
 
 <%= link_to 'Ajouter un film', new_list_bookmark_path(@list), class: "btn btn-primary mt-3" %>
-<%= link_to 'Changer le nom de la liste', edit_list_path(@list), class: "btn btn-secondary mt-3" %>
+<%= link_to "Editer la liste", edit_list_path(@list), class: "btn btn-secondary mt-3" %>
 <%= link_to "Retour aux listes", lists_path, class: "btn btn-secondary mt-3" %>
 <hr>
 <div class="row mt-4">
@@ -13,3 +20,7 @@
 	  <% end %>
 	</div>
 </div>
+
+
+
+

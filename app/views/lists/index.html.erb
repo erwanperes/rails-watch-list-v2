@@ -2,7 +2,11 @@
 	<h1>Listes</h1>
 	<div class="cards">
 	<% @lists.each do |list| %>
-		  <div class="card-category" style="background-image: linear-gradient(rgba(6, 84, 97, 0.4),rgba(0, 7, 10, 0.4)), url(<%= asset_path('banner.jpg') %>);">
+	<% if list.image.key %>
+	<div class="card-category" style="background-image: linear-gradient(rgba(6, 84, 97, 0.4),rgba(0, 7, 10, 0.4)), url(<%= cl_image_path list.image.key %>);">
+	<% else %>
+		<div class="card-category" style="background-image: linear-gradient(rgba(6, 84, 97, 0.4),rgba(0, 7, 10, 0.4)), url(<%= asset_path('banner.jpg') %>);">
+	<% end %>
 		<div class="card-description">
 			<h1 class="card-title"><%= link_to list.name, list %></h1>
 			<p class="d-flex justify-content-end mx-4">
@@ -16,4 +20,5 @@
 	<% end %>
 	</div>
 </div>
+
 

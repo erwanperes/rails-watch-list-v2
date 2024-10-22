@@ -1,6 +1,7 @@
 <div class="col-4">
 	<%= simple_form_for @list do |f| %>
-	  <%= f.input :name, label: "List Name" %>
+	  <%= f.input :name, label: "Nom de la liste" %>
+	  <%= f.input :image, as: :file, label: "Personnaliser l'image de la liste" %>
 	  <%= f.button :submit, submit_button_text, class: "btn btn-primary" %>
 	<% end %>
 </div>
