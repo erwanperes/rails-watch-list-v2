@@ -1,0 +1,48 @@
+<!-- app/views/lists/_review_section.html.erb -->
+<hr>
+<div class="row">
+  <div class="col-12 col-md-6">
+	<div class="reviews mt-4">
+	  <h3>Commentaires (<%= list.reviews.size %>)</h3>
+	  
+	  <% if list.reviews.any? %>
+		<% list.reviews.order(created_at: :desc).each do |review| %>
+		  <div class="review">
+			<div class="review-content">
+			  <p>
+				<small class="text-muted">
+				  <%= time_ago_in_words(review.created_at) %> ago
+				</small>
+			  </p>
+			  <p><%= review.content %></p>
+			</div>
+			<div class="review-link">
+			  <%= link_to list_review_path(list, review),
+				  data: { 
+					turbo_method: :delete,
+					turbo_confirm: "Êtes-vous sûr de vouloir supprimer ce commentaire ?"
+				  },
+				  class: "text-danger" do %>
+				Supprimer
+			  <% end %>
+			</div>
+		  </div>
+		<% end %>
+	  <% else %>
+		<p class="text-muted">Aucun commentaire pour le moment.</p>
+	  <% end %>
+	</div>
+  </div>
+  <div class="order-first order-md-last col-12 col-md-6">
+	<div class="review-form mt-4">
+	  <h4>Ajouter vos commentaires</h4>
+	  <%= simple_form_for [list, review] do |f| %>
+		<%= f.input :content, 
+					label: "Vos commentaires",
+					required: true,
+					placeholder: "Partagez votre avis..." %>
+		<%= f.submit "Ajouter", class: "btn btn-primary" %>
+	  <% end %>
+	</div>
+  </div>
+</div>

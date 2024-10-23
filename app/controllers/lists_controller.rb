@@ -5,6 +5,7 @@ class ListsController < ApplicationController
 
 	def show
 		@list = List.find(params[:id])
+		@review = Review.new  # Pour le formulaire de nouvelle review
 	end
 
 	def new
