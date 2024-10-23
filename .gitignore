@@ -1,4 +1,4 @@
 .env*
 .bundle/
 log
-tmp
+tmp.bundle/
